@@ -1,0 +1,188 @@
+:root {
+  color-scheme: light;
+  --bg: #0d1b2a;
+  --panel: rgba(9, 22, 36, 0.82);
+  --panel-border: rgba(160, 220, 255, 0.18);
+  --text: #eff8ff;
+  --muted: #bfd3e3;
+  --accent-mario: #ff6b35;
+  --accent-snake: #49b26b;
+  --accent-secondary: #ffd166;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(73, 178, 107, 0.18), transparent 32%),
+    radial-gradient(circle at right, rgba(255, 107, 53, 0.18), transparent 28%),
+    linear-gradient(160deg, #08111d 0%, #10243a 48%, #173657 100%);
+  color: var(--text);
+}
+
+body {
+  padding: 24px;
+}
+
+.page {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+}
+
+.hero,
+.game-shell {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.hero {
+  padding: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  line-height: 0.96;
+  margin-bottom: 16px;
+}
+
+.intro {
+  max-width: 60ch;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.menu,
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.menu {
+  margin-top: 24px;
+}
+
+.game-button,
+.secondary {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease, opacity 140ms ease;
+}
+
+.game-button:hover,
+.secondary:hover {
+  transform: translateY(-2px);
+}
+
+.game-button:focus-visible,
+.secondary:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.game-button.mario {
+  background: linear-gradient(135deg, #ff8b5e, var(--accent-mario));
+  color: #1f0902;
+  box-shadow: 0 16px 34px rgba(255, 107, 53, 0.32);
+}
+
+.game-button.snake {
+  background: linear-gradient(135deg, #7fe59d, var(--accent-snake));
+  color: #052012;
+  box-shadow: 0 16px 34px rgba(73, 178, 107, 0.32);
+}
+
+.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+.secondary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.game-shell {
+  padding: 24px;
+}
+
+.status-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.status-bar h2 {
+  margin-bottom: 0;
+}
+
+.status-bar p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.canvas-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #07111c;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+  touch-action: none;
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 14px;
+  }
+
+  .hero,
+  .game-shell {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .game-button,
+  .secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
